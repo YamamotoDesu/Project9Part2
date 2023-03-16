@@ -56,6 +56,7 @@ var body: some View {
 ```
 
 <img width="300" alt="スクリーンショット 2023-03-16 16 58 45" src="https://user-images.githubusercontent.com/47273077/225551702-9bb131fd-1ea8-44d1-9700-4b6541900310.png">
+
 ```swift
     var body: some View {
         Capsule()
