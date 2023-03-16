@@ -44,3 +44,14 @@ struct ContentView: View {
     }
 }
 ```
+
+<img width="300" alt="スクリーンショット 2023-03-16 16 50 40" src="https://user-images.githubusercontent.com/47273077/225549924-7b95ebbc-c37a-44b0-acc9-987f95141ec7.png">
+
+```swift
+var body: some View {
+        Text("Hello World!")
+            .frame(width: 300, height: 300)
+            .border(ImagePaint(image: Image("Example"), sourceRect: CGRect(x: 0, y: 0.25, width: 1, height: 0.5), scale: 0.2), width: 50)
+    }
+```
+
