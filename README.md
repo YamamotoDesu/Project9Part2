@@ -64,3 +64,61 @@ var body: some View {
             .frame(width: 300, height: 300)
     }
 ```
+
+<img width="300" alt="スクリーンショット 2023-03-17 9 50 49" src="https://user-images.githubusercontent.com/47273077/225783804-8b0a5b9e-bc23-46c0-9a38-5efcec4b96de.png">
+
+### Very slow
+<img width="300" alt="スクリーンショット 2023-03-17 9 50 49" src="https://user-images.githubusercontent.com/47273077/225783804-8b0a5b9e-bc23-46c0-9a38-5efcec4b96de.png">
+
+<img width="300" alt="スクリーンショット 2023-03-17 9 50 49" src="https://user-images.githubusercontent.com/47273077/225784034-bf5e1405-43bb-4328-96c2-58b7675ef413.gif">
+
+```swift
+struct ColorCyclingCircle: View {
+    var amount = 0.0
+    var steps = 100
+    
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Circle()
+                    .inset(by: Double(value))
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                color(for: value, brightness: 1),
+                                color(for: value, brightness: 0.5),
+                                
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2
+                    )
+            }
+        }
+    }
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
+        
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+}
+
+struct ContentView: View {
+    @State private var colorCycle = 0.0
+    
+    var body: some View {
+        VStack {
+            ColorCyclingCircle(amount: colorCycle)
+                .frame(width: 300, height: 300)
+            
+            Slider(value: $colorCycle)
+        }
+    }
+}
+```
