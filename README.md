@@ -163,3 +163,7 @@ Important: The drawingGroup() modifier is helpful to know about and to keep in y
         }
 ```
 
+```swift
+            Image("PaulHudson")
+                .colorMultiply(.red)
+```
