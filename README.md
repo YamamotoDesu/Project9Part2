@@ -122,3 +122,30 @@ struct ContentView: View {
     }
 }
 ```
+
+### Enhance Performance with drawingGroup
+<img width="300" alt="スクリーンショット 2023-03-17 9 50 49" src="https://user-images.githubusercontent.com/47273077/225785640-89b1cc75-eafc-4f84-aa72-209a0007ddc5.gif">
+
+```swift
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Circle()
+                    .inset(by: Double(value))
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                color(for: value, brightness: 1),
+                                color(for: value, brightness: 0.5),
+                                
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2
+                    )
+            }
+        }
+        .drawingGroup() // added
+    }
+```
