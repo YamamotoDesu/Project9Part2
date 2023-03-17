@@ -168,3 +168,37 @@ Important: The drawingGroup() modifier is helpful to know about and to keep in y
             Image("PaulHudson")
                 .colorMultiply(.red)
 ```
+
+<img width="300" alt="スクリーンショット 2023-03-17 10 59 33" src="https://user-images.githubusercontent.com/47273077/225792849-677ae2f4-4b06-4b86-8411-cf9acbb71274.png">
+
+```swift
+ var body: some View {
+        VStack {
+            ZStack {
+                Circle()
+                    .fill(.red)
+                    .frame(width: 200 * amount)
+                    .offset(x: -50, y: -80)
+                    .blendMode(.screen)
+
+                Circle()
+                    .fill(.green)
+                    .frame(width: 200 * amount)
+                    .offset(x: 50, y: -80)
+                    .blendMode(.screen)
+
+                Circle()
+                    .fill(.blue)
+                    .frame(width: 200 * amount)
+                    .blendMode(.screen)
+            }
+            .frame(width: 300, height: 300)
+            
+            Slider(value: $amount)
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+        .ignoresSafeArea()
+    }
+```
