@@ -149,3 +149,6 @@ struct ContentView: View {
         .drawingGroup() // added
     }
 ```
+
+Important: The drawingGroup() modifier is helpful to know about and to keep in your arsenal as a way to solve performance problems when you hit them, but you should not use it that often. Adding the off-screen render pass might slow down SwiftUI for simple drawing, so you should wait until you have an actual performance problem before trying to bring in drawingGroup().
+
