@@ -152,3 +152,14 @@ struct ContentView: View {
 
 Important: The drawingGroup() modifier is helpful to know about and to keep in your arsenal as a way to solve performance problems when you hit them, but you should not use it that often. Adding the off-screen render pass might slow down SwiftUI for simple drawing, so you should wait until you have an actual performance problem before trying to bring in drawingGroup().
 
+<img width="300" alt="スクリーンショット 2023-03-17 10 31 36" src="https://user-images.githubusercontent.com/47273077/225789267-0925743b-ed87-4d59-bf7b-f3281e422fb8.png">
+```swift
+      ZStack {
+            Image("PaulHudson")
+            
+            Rectangle()
+                .fill(.red)
+                .blendMode(.multiply)
+        }
+```
+
