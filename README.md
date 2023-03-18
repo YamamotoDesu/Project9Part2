@@ -317,7 +317,7 @@ var animatableData: Double {
 }
 ```
 
-<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226081741-145cf785-9b21-4210-9517-3bac61406e8c.gif">
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226083483-b3059aed-9d49-4bc5-8004-fdfc7225803d.gif">
 
 ```swift
 struct Trapezoid: Shape {
@@ -351,6 +351,57 @@ struct ContentView: View {
                 withAnimation {
                     insetAmount = Double.random(in: 10...90)
                    
+                }
+            }
+    }
+}
+```
+
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226081741-145cf785-9b21-4210-9517-3bac61406e8c.gif">
+
+As with simpler shapes, the solution here is to implement an animatableData property that will be set with intermediate values as the animation progresses. Here, though, there are two catches:
+
+We have two properties that we want to animate, not one.
+Our row and column properties are integers, and SwiftUI can’t interpolate integers.
+
+
+```swift
+struct Checkerboard: Shape {
+    var rows: Int
+    var columns: Int
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let rowSize = rect.height / Double(rows)
+        let columnSize = rect.width / Double(columns)
+        
+        for row in 0..<rows {
+            for column in 0..<columns {
+                if (row + column).isMultiple(of: 2) {
+                    let startX = columnSize * Double(column)
+                    let startY = rowSize * Double(row)
+                    
+                    let rect = CGRect(x: startX, y: startY, width: columnSize, height: rowSize)
+                    path.addRect(rect)
+                }
+            }
+        }
+        
+        return path
+    }
+}
+
+struct ContentView: View {
+    @State private var rows = 4
+    @State private var columns = 4
+    
+    var body: some View {
+       Checkerboard(rows: rows, columns: columns)
+            .onTapGesture {
+                withAnimation(.linear(duration: 3)) {
+                    rows = 8
+                    columns = 16
                 }
             }
     }
