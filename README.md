@@ -364,6 +364,7 @@ As with simpler shapes, the solution here is to implement an animatableData prop
 We have two properties that we want to animate, not one.
 Our row and column properties are integers, and SwiftUI can’t interpolate integers.
 
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226083800-83ba7e69-f37f-4e19-839c-0c13c1ec851d.gif">
 
 ```swift
 struct Checkerboard: Shape {
