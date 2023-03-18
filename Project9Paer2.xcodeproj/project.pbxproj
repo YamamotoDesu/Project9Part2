@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B10AD7529C2FAAB0002D83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B10AD7429C2FAAA0002D83E /* Assets.xcassets */; };
 		7B65DBA329C2E0C400E91558 /* Project9Paer2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65DBA229C2E0C400E91558 /* Project9Paer2App.swift */; };
 		7B65DBA529C2E0C500E91558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65DBA429C2E0C500E91558 /* ContentView.swift */; };
-		7B65DBA729C2E0D100E91558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B65DBA629C2E0D100E91558 /* Assets.xcassets */; };
 		7B65DBAA29C2E0D100E91558 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B65DBA929C2E0D100E91558 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B10AD7429C2FAAA0002D83E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../HackingWithSwift/SwiftUI/project9/Drawing/Assets.xcassets; sourceTree = "<group>"; };
 		7B65DB9F29C2E0C400E91558 /* Project9Paer2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project9Paer2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B65DBA229C2E0C400E91558 /* Project9Paer2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project9Paer2App.swift; sourceTree = "<group>"; };
 		7B65DBA429C2E0C500E91558 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7B65DBA629C2E0D100E91558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B65DBA929C2E0D100E91558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 			children = (
 				7B65DBA229C2E0C400E91558 /* Project9Paer2App.swift */,
 				7B65DBA429C2E0C500E91558 /* ContentView.swift */,
-				7B65DBA629C2E0D100E91558 /* Assets.xcassets */,
+				7B10AD7429C2FAAA0002D83E /* Assets.xcassets */,
 				7B65DBA829C2E0D100E91558 /* Preview Content */,
 			);
 			path = Project9Paer2;
@@ -126,7 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B65DBAA29C2E0D100E91558 /* Preview Assets.xcassets in Resources */,
-				7B65DBA729C2E0D100E91558 /* Assets.xcassets in Resources */,
+				7B10AD7529C2FAAB0002D83E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
