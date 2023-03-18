@@ -239,3 +239,25 @@ If you want to see the full effect of blending red, green, and blue, you should 
             .frame(width: 300, height: 300)
  ```
 
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226079274-55ed0983-1d2c-411f-8a29-ac6767d855f2.gif">
+
+```swift
+ @State private var amount = 0.0
+    
+    var body: some View {
+        VStack {
+            Image("PaulHudson")
+                .resizable()
+                .scaleEffect()
+                .frame(width: 200, height: 200)
+                .saturation(amount)
+                .blur(radius: (1 - amount) * 20)
+            
+            Slider(value: $amount)
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+        .ignoresSafeArea()
+    }
+ ```
