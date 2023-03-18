@@ -169,7 +169,7 @@ Important: The drawingGroup() modifier is helpful to know about and to keep in y
                 .colorMultiply(.red)
 ```
 
-<img width="300" alt="スクリーンショット 2023-03-17 10 59 33" src="https://user-images.githubusercontent.com/47273077/225792849-677ae2f4-4b06-4b86-8411-cf9acbb71274.png">
+<img width="300" alt="スクリーンショット 2023-03-18 11 23 37" src="https://user-images.githubusercontent.com/47273077/226078234-0ce1735e-c821-4921-827f-3473dfbb00df.png">
 
 ```swift
  var body: some View {
@@ -202,3 +202,8 @@ Important: The drawingGroup() modifier is helpful to know about and to keep in y
         .ignoresSafeArea()
     }
 ```
+
+
+If you’re particularly observant, you might notice that the fully blended color in the center isn’t quite white – it’s a very pale lilac color. The reason for this is that Color.red, Color.green, and Color.blue aren’t fully those colors; you’re not seeing pure red when you use Color.red. Instead, you’re seeing SwiftUI’s adaptive colors that are designed to look good in both dark mode and light mode, so they are a custom blend of red, green, and blue rather than pure shades.
+
+
