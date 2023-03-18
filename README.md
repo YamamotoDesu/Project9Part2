@@ -407,3 +407,27 @@ struct ContentView: View {
     }
 }
 ```
+
+
+To resolve the second problem we’re just going to do some type conversion: we can convert a Double to an Int just by using Int(someDouble), and go the other way by using Double(someInt).
+
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226083751-b8eec53b-f764-4ced-a908-abc785771504.gif">
+
+```swift
+
+struct Checkerboard: Shape {
+    var rows: Int
+    var columns: Int
+    
+    var animatebleData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(Double(rows), Double(columns))
+        }
+        
+        set {
+            rows = Int(newValue.first)
+            columns = Int(newValue.second)
+        }
+    }
+    
+```
