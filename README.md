@@ -297,3 +297,62 @@ struct ContentView: View {
     }
 }
 ```
+
+Now run it again, and… nothing has changed. We’ve asked for animation, but we aren’t getting animation – what gives?
+
+When looking at animations previously, I asked you to add a call to print() inside the body property, then said this:
+
+”What you should see is that it prints out 2.0, 3.0, 4.0, and so on. At the same time, the button is scaling up or down smoothly – it doesn’t just jump straight to scale 2, 3, and 4. What’s actually happening here is that SwiftUI is examining the state of our view before the binding changes, examining the target state of our views after the binding changes, then applying an animation to get from point A to point B.”
+
+So, as soon as insetAmount is set to a new random value, it will immediately jump to that value and pass it directly into Trapezoid – it won’t pass in lots of intermediate values as the animation happens. This is why our trapezoid jumps from inset to inset; it has no idea an animation is even happening.
+
+We can fix this in only four lines of code, one of which is just a closing brace. However, even though this code is simple, the way it works might bend your brain.
+
+First, the code – add this new computed property to the Trapezoid struct now:
+
+```swift
+var animatableData: Double {
+    get { insetAmount }
+    set { insetAmount = newValue }
+}
+```
+
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226081741-145cf785-9b21-4210-9517-3bac61406e8c.gif">
+
+```swift
+struct Trapezoid: Shape {
+    var insetAmount: Double
+    var animatableData: Double {
+        get { insetAmount }
+        set { insetAmount = newValue }
+    }
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: 0, y: rect.maxY))
+        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxY - insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        
+        return path
+    }
+    
+}
+
+struct ContentView: View {
+    @State private var insetAmount = 50.0
+    
+    var body: some View {
+        Trapezoid(insetAmount: insetAmount)
+            .frame(width: 200, height: 200)
+            .onTapGesture {
+                withAnimation {
+                    insetAmount = Double.random(in: 10...90)
+                   
+                }
+            }
+    }
+}
+```
