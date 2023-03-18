@@ -207,3 +207,35 @@ Important: The drawingGroup() modifier is helpful to know about and to keep in y
 If you’re particularly observant, you might notice that the fully blended color in the center isn’t quite white – it’s a very pale lilac color. The reason for this is that Color.red, Color.green, and Color.blue aren’t fully those colors; you’re not seeing pure red when you use Color.red. Instead, you’re seeing SwiftUI’s adaptive colors that are designed to look good in both dark mode and light mode, so they are a custom blend of red, green, and blue rather than pure shades.
 
 
+If you want to see the full effect of blending red, green, and blue, you should use custom colors like these three:
+
+```swift
+.fill(Color(red: 1, green: 0, blue: 0))
+.fill(Color(red: 0, green: 1, blue: 0))
+.fill(Color(red: 0, green: 0, blue: 1))
+```
+
+![Uploading スクリーンショット 2023-03-18 11.29.32.png…]()
+
+```swift
+ ZStack {
+                Circle()
+                    .fill(Color(red: 1, green: 0, blue: 0))
+                    .frame(width: 200 * amount)
+                    .offset(x: -50, y: -80)
+                    .blendMode(.screen)
+
+                Circle()
+                    .fill(Color(red: 0, green: 1, blue: 0))
+                    .frame(width: 200 * amount)
+                    .offset(x: 50, y: -80)
+                    .blendMode(.screen)
+
+                Circle()
+                    .fill(Color(red: 0, green: 0, blue: 1))
+                    .frame(width: 200 * amount)
+                    .blendMode(.screen)
+            }
+            .frame(width: 300, height: 300)
+ ```
+
