@@ -432,3 +432,15 @@ struct Checkerboard: Shape {
     }
     
 ```
+
+Of course, the next question is: how do we animate three properties? Or four?
+
+To answer that, let me show you the animatableData property for SwiftUI’s EdgeInsets type:
+
+```swift
+AnimatablePair<CGFloat, AnimatablePair<CGFloat, AnimatablePair<CGFloat, CGFloat>>>
+```
+
+Yes, they use three separate animatable pairs, then just dig through them using code such as newValue.second.second.first.
+
+
