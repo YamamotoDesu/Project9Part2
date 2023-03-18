@@ -261,3 +261,39 @@ If you want to see the full effect of blending red, green, and blue, you should 
         .ignoresSafeArea()
     }
  ```
+ 
+ 
+<img width="300" alt="スクリーンショット 2023-03-18 11 36 55" src="https://user-images.githubusercontent.com/47273077/226081172-75314b95-a20e-45ef-a7fd-1097b9c42d36.gif">
+
+ ```swift
+ struct Trapezoid: Shape {
+    var insetAmount: Double
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: 0, y: rect.maxY))
+        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxY - insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        
+        return path
+    }
+    
+}
+
+struct ContentView: View {
+    @State private var insetAmount = 50.0
+    
+    var body: some View {
+        Trapezoid(insetAmount: insetAmount)
+            .frame(width: 200, height: 200)
+            .onTapGesture {
+                withAnimation {
+                    insetAmount = Double.random(in: 10...90)
+                }
+            }
+    }
+}
+```
